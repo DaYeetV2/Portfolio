@@ -13,7 +13,8 @@
     --text-color: #fff;
     --main-color: #4aeb4d;
     --second-color: gray;
-    --other-color: #121c19;
+    --other-color: #1b291c;
+    --outline-color: #0e301e;
     --h1-font: 5.2rem;
     --h2-font: 3.5rem;
     --p-font: 1.1rem;
@@ -117,7 +118,7 @@ span{
 header.sticky{
     padding: 10px 16%;
     background: var(--bg-color);
-    border-bottom: 1px solid #0e301e;
+    border-bottom: 1px solid var(--outline-color);
 }
 .about{
     display: grid;
@@ -180,11 +181,12 @@ header.sticky{
 }
 .box{
     padding: 45px;
-    background: #12141c;
+    background: #0a1915;
     border-top: 5px solid transparent;
     border-radius: 0.5rem;
     transition: all .40s ease;
     cursor: pointer;
+    outline: 1px solid var(--outline-color);
 }
 .box h3{
     font-size: 24px;
@@ -223,6 +225,7 @@ header.sticky{
     background: #12141c;
     border-radius: 0.5rem;
     transition: all .40s ease;
+    outline: 1px solid var(--outline-color);
 }
 .main-row{
     display: flex;
@@ -425,17 +428,17 @@ form textarea{
 .back-video{
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
     z-index: -1;
 }
 
-@media (min-aspect-ratio: 16/10){
+@media (min-aspect-ratio: 16/9){
     .back-video{
-        width: 110%;
+        width: 100%;
         height: auto;
     }
 }
-@media (max-aspect-ratio: 16/10){
+@media (max-aspect-ratio: 16/9){
     .back-video{
         width: auto;
         height: 100%;
@@ -506,7 +509,7 @@ img{
     transform: translateX(-50%);
     height: 4px;
     width: 100px;
-    background-color: #eb4a4a;
+    background-color: var(--main-color);
     border-radius: 2px;
 }
 
@@ -552,7 +555,7 @@ img{
     width: 0;
     height: 4px;
     border-radius: 2px 0 0 2px;
-    background-color: #eb4a4a;
+    background-color: var(--main-color);
     transition: .5s;
 }
 
@@ -564,7 +567,7 @@ img{
     width: 0;
     height: 4px;
     border-radius: 0 2px 2px 0;
-    background-color: #eb4a4a;
+    background-color: var(--main-color);
     transition: .5s;
 }
 
@@ -573,7 +576,7 @@ img{
     height: 90px;
     position: relative;
     border-radius: 45px;
-    background-color: #fff;
+    background-color: var(--other-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -597,8 +600,8 @@ img{
 }
 
 .skill-icon{
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: 75px;
     z-index: 2;
 }
 
