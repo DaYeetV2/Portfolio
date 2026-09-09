@@ -15,6 +15,7 @@
     --second-color: gray;
     --other-color: #1b291c;
     --outline-color: #0e301e;
+    --item-bg-color: #0a1915;
     --h1-font: 5.2rem;
     --h2-font: 3.5rem;
     --p-font: 1.1rem;
@@ -181,7 +182,7 @@ header.sticky{
 }
 .box{
     padding: 45px;
-    background: #0a1915;
+    background: var(--item-bg-color);
     border-top: 5px solid transparent;
     border-radius: 0.5rem;
     transition: all .40s ease;
@@ -222,7 +223,7 @@ header.sticky{
 }
 .row{
     padding: 25px;
-    background: #12141c;
+    background: var(--item-bg-color);
     border-radius: 0.5rem;
     transition: all .40s ease;
     outline: 1px solid var(--outline-color);
@@ -293,7 +294,7 @@ header.sticky{
 .contact-icons i{
     height: 40px;
     width: 40px;
-    background: #12141c;
+    background: var(--item-bg-color);
     border-radius: 0.5rem;
     color: var(--main-color);
     display: inline-flex;
@@ -407,7 +408,7 @@ form textarea{
         left: 0;
         display: flex;
         flex-direction: column;
-        background: #12141c;
+        background: var(--item-bg-color);
         text-align: left;
         transition: all .40s ease;
     }
