@@ -1,0 +1,1 @@
+﻿This is the repo for my portfolio. The portfolio is still wip and will be updated when I make new things.
