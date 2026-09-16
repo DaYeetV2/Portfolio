@@ -1,28 +1,43 @@
-﻿const header = document.querySelector("header");
+const header = document.querySelector('.site-header');
+const menuToggle = document.querySelector('#menu-toggle');
+const nav = document.querySelector('#nav');
+const topButton = document.querySelector('.top');
+const navLinks = document.querySelectorAll('.nav a');
+const sections = document.querySelectorAll('main section[id]');
 
-window.addEventListener ("scroll", function() {
-    header.classList.toggle ("sticky", window.scrollY >0);
+function updateScrollState() {
+    const scrolled = window.scrollY > 30;
+    header.classList.toggle('scrolled', scrolled);
+    topButton.classList.toggle('visible', window.scrollY > window.innerHeight * 0.65);
+
+    let current = '';
+    sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 180) current = section.id;
+    });
+    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+}
+
+menuToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
 });
 
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+navLinks.forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+}));
 
-menu.onclick = () => {
-    menu.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-};
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
 
-window.onscroll = () => {
-    menu.classList.remove('bx-x');
-    navbar.classList.remove('active');
-};
-
-const sr = ScrollReveal ({
-    distance: '25px',
-    duration: 250,
-    reset: true
-})
-
-sr.reveal('.home-text',{delay:190, origin:'bottom'})
-
-sr.reveal('.about,.services,.portfolio,.contact',{delay:200, origin:'bottom'})
+document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
